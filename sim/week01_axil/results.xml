@@ -1,0 +1,7 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1757521295" />
+    <testcase name="basic_rw" classname="test_axil" file="/home/jusgowiturs/Verilog/sim/bses-linux-fpga/sim/week01_axil/tests/test_axil.py" lineno="36" time="0.022053956985473633" sim_time_ns="170.001" ratio_time="7708.4126042313055" />
+    <testcase name="partial_write_and_readback" classname="test_axil" file="/home/jusgowiturs/Verilog/sim/bses-linux-fpga/sim/week01_axil/tests/test_axil.py" lineno="55" time="0.013155698776245117" sim_time_ns="180.001" ratio_time="13682.35949009587" />
+  </testsuite>
+</testsuites>
