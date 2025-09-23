@@ -1,7 +1,6 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1758607874" />
-    <testcase name="counter_basic_counting" classname="test_counter" file="/home/jusgowiturs/Verilog/sim/bses-linux-fpga/sim/week00_basics/tests/test_counter.py" lineno="32" time="0.0029191970825195312" sim_time_ns="125.001" ratio_time="42820.33602613525" />
-    <testcase name="counter_wrap_example" classname="test_counter" file="/home/jusgowiturs/Verilog/sim/bses-linux-fpga/sim/week00_basics/tests/test_counter.py" lineno="59" time="0.03148508071899414" sim_time_ns="2595.0009999999997" ratio_time="82420.02055387784" />
+    <property name="random_seed" value="1758614398" />
+    <testcase name="first_test_case" classname="test_counter_fromscratch" file="/mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week00_basics/tests/test_counter_fromscratch.py" lineno="31" time="0.010381937026977539" sim_time_ns="0.166" ratio_time="15.989309082558274" />
   </testsuite>
 </testsuites>

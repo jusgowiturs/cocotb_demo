@@ -4,7 +4,7 @@ PWD := $(shell pwd)
 
 VERILOG_SOURCES := $(PWD)/rtl/counter.v
 TOPLEVEL := counter
-MODULE := test_counter
+MODULE := test_counter_fromscratch
 
 SIM ?= verilator
 WAVES ?= 1
