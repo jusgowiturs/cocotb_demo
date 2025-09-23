@@ -1,10 +1,7 @@
 # This is to understand how cocotb works
 # Import all the necessary library
 import cocotb
-from 
-
-
-cocotb.clock import Clock # This Clock can be used for triggering
+from cocotb.clock import Clock # This Clock can be used for triggering
 from cocotb.triggers import FallingEdge, RisingEdge # SOFTWARE Falling and Rising EDGE
 # Lets def reset definition
 # In the design code the following signals
