@@ -1,6 +1,0 @@
-<testsuites name="results">
-  <testsuite name="all" package="all">
-    <property name="random_seed" value="1758614398" />
-    <testcase name="first_test_case" classname="test_counter_fromscratch" file="/mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week00_basics/tests/test_counter_fromscratch.py" lineno="31" time="0.010381937026977539" sim_time_ns="0.166" ratio_time="15.989309082558274" />
-  </testsuite>
-</testsuites>

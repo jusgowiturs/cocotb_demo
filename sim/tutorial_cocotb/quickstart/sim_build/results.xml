@@ -1,0 +1,7 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1759834554" />
+    <testcase name="test_case1" classname="test_adder" file="/mnt/d/BS_ES/EL_FPGA/coco_tb/sim/tutorial_cocotb/quickstart/test_adder.py" lineno="6" time="0.0034682750701904297" sim_time_ns="20.001" ratio_time="5766.843631264179" />
+    <testcase name="test_case2" classname="test_adder" file="/mnt/d/BS_ES/EL_FPGA/coco_tb/sim/tutorial_cocotb/quickstart/test_adder.py" lineno="22" time="0.004380464553833008" sim_time_ns="20.001" ratio_time="4565.954079573287" />
+  </testsuite>
+</testsuites>
