@@ -1,3 +1,11 @@
 *.sh
 **/__pycache__/
 **/sim_build/
+**/*.cache/
+**/*.gen
+**/*.hw/
+**/*.ip_user_files
+**/*.runs/
+**/*.sim/
+**/*.srcs/
+**/*.xpr/
