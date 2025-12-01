@@ -1,0 +1,34 @@
+/dts-v1/;
+
+/ {
+    description = "FIT image for PYNQ-Z1 kernel";
+    #address-cells = <1>;
+
+    images {
+        kernel {
+            description = "Linux kernel";
+            data = /incbin/("zImage");
+            type = "kernel";
+            arch = "arm";
+            os = "linux";
+            compression = "none";
+            load = <0xc0208000>;        /* kernel load address as before */
+            entry = <0xc0208000>;
+        };
+        fdt {
+            description = "Flattened device tree";
+            data = /incbin/("zynq-zed-week6.dtb");
+            type = "flat_dt";
+            compression = "none";
+            load = <0x02000000>;         /* <-- safe RAM address for DTB */
+        };
+    };
+
+    configurations {
+        default = "conf";
+        conf {
+            kernel = "kernel";
+            fdt = "fdt";
+        };
+    };
+};
