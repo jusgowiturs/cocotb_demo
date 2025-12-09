@@ -1,7 +1,0 @@
-# Build artifacts / large binaries
-sd_boot.img
-sim/
-busybox/
-*.bin
-*.img
-vmlinux
