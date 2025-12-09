@@ -1,0 +1,15 @@
+
+# Build artifacts / large binaries
+sd_boot.img
+Working_model/
+*.scr
+*.cmd
+sim/
+busybox/
+*.bin
+*.img
+vmlinux
+uImage
+zImage
+*.ub
+*.itb

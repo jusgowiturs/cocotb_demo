@@ -1,0 +1,43 @@
+/dts-v1/;
+
+/ {
+    description = "FIT image for PYNQ-Z1 kernel";
+    #address-cells = <1>;
+
+    images {
+        kernel {
+            description = "Linux kernel";
+            data = /incbin/("zImage");
+            type = "kernel";
+            arch = "arm";
+            os = "linux";
+            compression = "none";
+             /* Correct physical load address for zImage */
+            load = <0x02000000>;
+
+            /* zImage entry MUST match load */
+            entry = <0x02000000>;
+        };
+        fdt {
+             description = "Flattened device tree";
+            data = /incbin/("zynq-zed-week6.dtb");
+            type = "flat_dt";
+            arch = "arm";
+            compression = "none";
+
+            /* Safe DTB location */
+            load = <0x01F00000>;
+        };
+    };
+
+    configurations {
+    default = "conf";
+    conf {
+        description = "PYNQ-Z1 Linux boot";
+        kernel = "kernel";
+        fdt = "fdt";
+        bootargs = "console=ttyPS1,115200 earlycon=cdns,mmio,0xE0001000,115200n8 keep_bootcon cpufreq.off=1 clk_ignore_unused root=/dev/mmcblk0p2 rw";
+
+    };
+};
+};

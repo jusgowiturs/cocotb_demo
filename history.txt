@@ -1,0 +1,1000 @@
+ 1002  make all
+ 1003  cd
+ 1004  cd week05_mmio_demo/
+ 1005  ls
+ 1006  vi Makefile 
+ 1007  export PATH_TO_ARM_ROOTFS=/tmp/initramfs
+ 1008  export PATH_TO_ARM_KERNEL=~/arm-kernel/linux-6.6
+ 1009  sudo make -C $PATH_TO_ARM_KERNEL     ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-     M=$(pwd) modules_install     INSTALL_MOD_PATH=$PATH_TO_ARM_ROOTFS
+ 1010  cd ../arm-kernel/linux-6.6/
+ 1011  echo $CROSS_COMPILE
+ 1012  make -j$(nproc) ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- 
+ 1013  cp vmlinux /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week05_renode/binfiles/vmlinux_week5
+ 1014  ls ~/week05_mmio_demo/
+ 1015  cd sim/work_good/Baremetal/
+ 1016  arm-none-eabi-gcc -mcpu=cortex-a9 -marm -nostdlib -ffreestanding     -Wl,-Ttext=0x0 -Wl,-Tdata=0x1000     hello.c -o hello.elf
+ 1017  arm-none-eabi-gcc     -mcpu=cortex-a9 -marm     -nostdlib -ffreestanding     startup.s hello.c     -T linker.ld     -o hello.elf
+ 1018  ls
+ 1019  arm-none-eabi-objdump -d hello.elf | head
+ 1020  arm-none-eabi-objdump -d hello.elf 
+ 1021  arm-none-eabi-objdump -d hello.elf | head
+ 1022  arm-none-eabi-gcc -mcpu=cortex-a9 -marm -nostdlib -ffreestanding     startup.s hello.c -T linker.ld -o hello.elf
+ 1023  arm-none-eabi-objdump -d hello.elf | head
+ 1024  arm-none-eabi-gcc -mcpu=cortex-a9 -marm -nostdlib -ffreestanding     startup.s hello.c -T linker.ld -o hello.elf
+ 1025  arm-none-eabi-gcc -mcpu=cortex-a9 -marm -nostdlib -ffreestanding     -Wl,-Ttext=0x0 -Wl,-Tdata=0x1000     hello.c -o hello.elf
+ 1026  arm-none-eabi-gcc -mcpu=cortex-a9 -marm -nostdlib -ffreestanding     startup.s hello.c -T linker.ld -o hello.elf
+ 1027  cd ..
+ 1028  cd minimal_varient/
+ 1029  ls
+ 1030  ls /proc/acpi/
+ 1031  ls /proc/devices 
+ 1032  lw
+ 1033  cd ../../week05_mmio_demo/
+ 1034  ls
+ 1035  cat Makefile 
+ 1036  cd
+ 1037  cd arm-kernel/
+ 1038  cd linux-6.6
+ 1039  ls
+ 1040  cd ../busybox-1.32.0/
+ 1041  ls
+ 1042  cd ../linux-6.6
+ 1043  make clean
+ 1044  mkdir ../INITRAMFS
+ 1045  cd ../INITRAMFS/
+ 1046  cp /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/Bigvarient/myInitRamfs.gz .
+ 1047  cp /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/Bigvarient/myInitramfs_mk_install.gz .
+ 1048  ls
+ 1049  gunzip myInitramfs_mk_install.gz 
+ 1050  ls
+ 1051  cp /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/Bigvarient/myInitramfs_mk_install.gz .
+ 1052  ls
+ 1053  ./myInitramfs_mk_install
+ 1054  cat myInitramfs_mk_install
+ 1055  61;6;7;21;22;23;24;28;32;42c61;6;7;21;22;23;24;28;32;42c61;6;7;21;22;23;24;28;32;42c61;6;7;21;22;23;24;28;32;42c;123R
+ 1056  clear
+ 1057  ls
+ 1058  gunzip myInitRamfs.gz 
+ 1059  ls
+ 1060  cp /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/Bigvarient/myInitRamfs.gz .
+ 1061  ls
+ 1062  cd myInitRamfs
+ 1063  ll
+ 1064  file myInitRamfs
+ 1065  tar -tvf myInitRamfs
+ 1066  ls
+ 1067  tar -tvf myInitramfs_mk_install
+ 1068  tar -xvf myInitRamfs -C rootfs
+ 1069  tar -xvf myInitRamfs -C .
+ 1070  ls
+ 1071  cd myInitRamfs/
+ 1072  ls
+ 1073  find . | cpio -H newc -ov > ../initramfs.cpio
+ 1074  ls
+ 1075  cd ..
+ 1076  ls
+ 1077  rm initramfs.cpio 
+ 1078  rm -rf myInitRamfs
+ 1079  ls
+ 1080  tar -xvf myInitRamfs.gz
+ 1081  ls
+ 1082  rm -rf myInit
+ 1083  ls
+ 1084  rm -rf myInitRamfs
+ 1085  tar -xvf myInitRamfs.gz -C .
+ 1086  ls
+ 1087  cp /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/Bigvarient/myInitRamfs.gz .
+ 1088  tar -xvf myInitRamfs.gz -C .
+ 1089  tar -xvf myInitRamfs.gz .
+ 1090  ls
+ 1091  cp /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/Bigvarient/myInitRamfs.gz .
+ 1092  rm -rm myInitRamfs
+ 1093  rm -rf myInitRamfs
+ 1094  ls
+ 1095  gzip -d myInitRamfs.gz 
+ 1096  ls
+ 1097  cp /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/Bigvarient/myInitRamfs.gz .
+ 1098  ls
+ 1099  rm myInitRamfs
+ 1100  ls
+ 1101  tar -tvf myInitRamfs.gz
+ 1102  ls
+ 1103  mkdir rootfs
+ 1104  tar -tvf myInitRamfs.gz ./rootfs
+ 1105  tar -tvf myInitRamfs.gz ./rootfs/
+ 1106  ls
+ 1107  rm rootfs/
+ 1108  ls
+ 1109  rm -rf rootfs/
+ 1110  ls
+ 1111  gunzip myInitRamfs.gz 
+ 1112  ls
+ 1113  tar -xvf myInitRamfs
+ 1114  ls
+ 1115  ls-l
+ 1116  ls -l
+ 1117  cp /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/Bigvarient/myInitRamfs.gz .
+ 1118  ls -l
+ 1119  rm -rf myInitRamfs
+ 1120  ls -
+ 1121  ls -l
+ 1122  file myInitRamfs.gz 
+ 1123  gunzip -k myInitRamfs.gz
+ 1124  ls
+ 1125  file myInitRamfs
+ 1126  tar -tvf myInitRamfs
+ 1127  mkdir rootfs
+ 1128  tar -xvf myInitRamfs -C rootfs
+ 1129  cd ../busybox-1.32.0/
+ 1130  ls
+ 1131  make distclean
+ 1132  cp /mnt/d/BS_ES/EL_FPGA/bses-linux-fpga/bses-linux-fpga/sim/week04_renode/config-busybox  .config
+ 1133  ls
+ 1134  export ARCH=arm
+ 1135  export CROSS_COMPILE=arm-linux-gnueabihf-
+ 1136  make oldconfig
+ 1137  make -j$(nproc) CROSS_COMPILE=arm-linux-gnueabihf- install CONFIG_PREFIX=/tmp/initramfs
+ 1138  cd ../linux-6.6
+ 1139  ls /tmp/initramfs/
+ 1140  ls
+ 1141  # Required device nodes
+ 1142  mkdir -p /tmp/initramfs/{bin,sbin,etc,proc,sys,dev,usr/bin}
+ 1143  cd /tmp/initramfs
+ 1144  sudo mknod -m 600 dev/console c 5 1
+ 1145  sudo mknod -m 666 dev/null    c 1 3
+ 1146  # Minimal /init
+ 1147  cat > /tmp/initramfs/init <<'EOF'
+ 1148  #!/bin/sh
+ 1149  mount -t proc none /proc
+ 1150  mount -t sysfs none /sys
+ 1151  mount -t devtmpfs none /dev
+ 1152  echo "Userspace up; dropping to shell."
+ 1153  # Setting up for autoloading drivers if needed
+ 1154  for f in /sys/bus/platform/devices/*/modalias ; do
+ 1155  	[ -f "$f" ] && modprobe "$(cat "$f")" 2>/dev/null || true
+ 1156  done
+ 1157  exec /bin/sh < /dev/console > /dev/console 2>&1
+ 1158  EOF
+ 1159  chmod +x /tmp/initramfs/init
+ 1160  # Make sure it is owned by root for correct permissions
+ 1161  sudo chown -R root\: /tmp/initramfs
+ 1162  cd 
+ 1163  cd arm-kernel/linux-6.6
+ 1164  make clean
+ 1165  cp /mnt/d/BS_ES/EL_FPGA/bses-linux-fpga/bses-linux-fpga/sim/week04_renode/config-linux  .config
+ 1166  make oldconfig
+ 1167  grep INITRAMFS .config
+ 1168  make -j$(nproc)
+ 1169  history -30
+ 1170  history 30
+ 1171  history 80
+ 1172  history 100
+ 1173  cp vmlinux /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week04_mmio_demo/
+ 1174  cd 
+ 1175  cd /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week04_mmio_demo/
+ 1176  ls
+ 1177  mv vmlinux ../week04_renode/binfiles/
+ 1178  ls
+ 1179  make clean
+ 1180  make all
+ 1181  ls
+ 1182  make clean
+ 1183  export PATH_TO_ARM_ROOTFS=/tmp/initramfs
+ 1184  export PATH_TO_ARM_KERNEL=~/arm-kernel/linux-6.6
+ 1185  sudo make -C $PATH_TO_ARM_KERNEL ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- M=$(pwd) modules_install 
+ 1186  cd
+ 1187  cd arm-kernel/
+ 1188  cd linux-6.6
+ 1189  make -j$(nproc)
+ 1190  cp vmlinux /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week04_renode/binfiles/
+ 1191  file vmlinux
+ 1192  cd /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week04_mmio_demo/
+ 1193  ls
+ 1194  make clean
+ 1195  sudo make -C $PATH_TO_ARM_KERNEL     ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-     M=$(pwd) modules_install     INSTALL_MOD_PATH=$PATH_TO_ARM_ROOTFS
+ 1196  nano module_install_auto_script.sh
+ 1197  ls
+ 1198  ./module_install_auto_script.sh 
+ 1199  ls /tmp/initramfs/lib/modules/6.6.0/
+ 1200  ls
+ 1201  ./module_install_auto_script.sh 
+ 1202  ls
+ 1203  make clean
+ 1204  make all
+ 1205  make clean
+ 1206  export PATH_TO_ARM_ROOTFS=/tmp/initramfs
+ 1207  export PATH_TO_ARM_KERNEL=~/arm-kernel/linux-6.6
+ 1208  sudo make -C $PATH_TO_ARM_KERNEL     ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-     M=$(pwd) modules_install     INSTALL_MOD_PATH=$PATH_TO_ARM_ROOTFS
+ 1209  ls
+ 1210  ls /tmp/initramfs/lib/modules/6.6.0/
+ 1211  rm -r /tmp/initramfs/lib/modules/6.6.0/
+ 1212  ls /tmp/initramfs/lib/modules/6.6.0/
+ 1213  rm -r *.*
+ 1214  ls
+ 1215  cp /mnt/d/BS_ES/EL_FPGA/bses-linux-fpga/bses-linux-fpga/sim/week04_mmio_demo/. .
+ 1216  cp /mnt/d/BS_ES/EL_FPGA/bses-linux-fpga/bses-linux-fpga/sim/week04_mmio_demo/* .
+ 1217  ls
+ 1218  ./module_install_script.sh 
+ 1219  ls /tmp/initramfs/lib/modules/6.6.0/
+ 1220  ./module_install_script.sh 
+ 1221  ls
+ 1222  ls /tmp/initramfs/lib/modules/6.6.0/
+ 1223  make clean
+ 1224  ls
+ 1225  make clean
+ 1226  ls
+ 1227  pwd
+ 1228  ls
+ 1229  make all
+ 1230  make clean
+ 1231  ./module_install_script.sh 
+ 1232  cp ~/arm-kernel/linux-6.6/vm ../week04_renode/binfiles/.
+ 1233  cp ~/arm-kernel/linux-6.6/vmlinux ../week04_renode/binfiles/.
+ 1234  ls
+ 1235  ./module_install_script.sh 
+ 1236  ls
+ 1237  cp ~/arm-kernel/linux-6.6/vmlinux ../week04_renode/binfiles/.
+ 1238  /tmp/initramfs/lib/modules/6.6.0/
+ 1239  ls/tmp/initramfs/lib/modules/6.6.0/
+ 1240  ls /tmp/initramfs/lib/modules/6.6.0/
+ 1241  ls /tmp/initramfs/lib/modules/6.6.0/updates/
+ 1242  strings ~/arm-kernel/linux-6.6/vmlinux | grep .ko
+ 1243  strings ~/arm-kernel/linux-6.6/vmlinux | grep mmio_demo.ko
+ 1244  cd
+ 1245  cd arm-kernel/linux-6.6
+ 1246  make -j$(nproc)
+ 1247  cp ~/arm-kernel/linux-6.6/vmlinux ../week04_renode/binfiles/.
+ 1248  cp ~/arm-kernel/linux-6.6/vmlinux /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week04_renode/binfiles/.
+ 1249  strings ~/arm-kernel/linux-6.6/vmlinux | grep mmio_demo.ko
+ 1250  cd /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week04_mmio_demo/
+ 1251  ls
+ 1252  ./module_install_script.sh 
+ 1253  cd
+ 1254  pwd
+ 1255  cd arm-kernel/
+ 1256  cd /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week04_mmio_demo/
+ 1257  ./module_install_script.sh 
+ 1258  ls /tmp/initramfs/
+ 1259  ls /tmp/initramfs/lib/modules/6.6.0/updates/
+ 1260  ls
+ 1261  ./module_install_script.sh 
+ 1262  cp ~/arm-kernel/linux-6.6/vmlinux ../week04_renode/binfiles/.
+ 1263  cd
+ 1264  cd arm-kernel/
+ 1265  ls
+ 1266  cd INITRAMFS/
+ 1267  ls
+ 1268  cd ..
+ 1269  ls
+ 1270  rm -rf INITRAMFS/
+ 1271  mv busybox-1.32.0.tar.bz2 ../
+ 1272  mv linux-6.6.tar.xz ../
+ 1273  ls
+ 1274  rm -rf linux-6.6.100/
+ 1275  ls
+ 1276  rm -rf linux-6.6.100/
+ 1277  ls
+ 1278  cd ..
+ 1279  tar -czf ~/initramfs-backup.tar.gz -C /tmp initramfs
+ 1280  ls
+ 1281  mv initramfs-backup.tar.gz arm-kernel/
+ 1282  ls
+ 1283  cd /tmp/initramfs
+ 1284  find . -print0 | cpio --null -ov --format=newc > ~/initramfs-backup.cpio
+ 1285  cd
+ 1286  ls
+ 1287  rm -rf /tmp/initramfs
+ 1288  ls
+ 1289  ls /tmp/initramfs/
+ 1290  rm -rf /tmp/initramfs
+ 1291  sudo rm -rf /tmp/initramfs
+ 1292  ls /tmp/initramfs/
+ 1293  mkdir -p /tmp/initramfs
+ 1294  cd /tmp/initramfs
+ 1295  cpio -idv < ~/initramfs-backup.cpio
+ 1296  ls /tmp/initramfs/
+ 1297  git add .
+ 1298  git commit -m "ET_SET_A_Under_Preparation"
+ 1299  git pull
+ 1300  git pull main
+ 1301  git pull --rebase
+ 1302  git pull --rebase origin main
+ 1303  git add .
+ 1304  git commit -m "ET_SET_A_Under_Preparation"
+ 1305  git add .
+ 1306  git commit -m "ET_QP_SET_A_Pending"
+ 1307  git rev-parse --show-toplevel
+ 1308  git status
+ 1309  ls
+ 1310  cd DSD
+ 1311  ls
+ 1312  ls -l
+ 1313  cd ..
+ 1314  ls
+ 1315  ls-l
+ 1316  ls -l
+ 1317  cd ..
+ 1318  ls -l
+ 1319  ll
+ 1320  cd DSD
+ 1321  ll
+ 1322  cd DSD
+ 1323  ll
+ 1324  git remote -v
+ 1325  git add .
+ 1326  git commit -m "ET_QP_SET_A_Pending"
+ 1327  git pull
+ 1328  git push
+ 1329  ls
+ 1330  cd ../../
+ 1331  ls
+ 1332  git remote -v
+ 1333  ll
+ 1334  cd DSD
+ 1335  ll
+ 1336  cd DSD
+ 1337  ls
+ 1338  ll
+ 1339  cd ../../
+ 1340  ll
+ 1341  git status
+ 1342  cd DSD/DSD
+ 1343  ls
+ 1344  ll
+ 1345  git status
+ 1346  git status --ignored
+ 1347  git log --oneline --decorate --graph -n 5
+ 1348  git add .
+ 1349  git commit -m "Mock quiz 2 added"
+ 1350  git push
+ 1351  git add .
+ 1352  git commit -m "END TERM SET A Prepared"
+ 1353  git push
+ 1354  ls
+ 1355  cd linuxbuild/
+ 1356  LS
+ 1357  ls
+ 1358  cd
+ 1359  ls
+ 1360  cd arm-kernel/linux-6.6/
+ 1361  ls
+ 1362  cat tinyconfig
+ 1363  ls
+ 1364  make clean
+ 1365  ./tinyconfig 
+ 1366  cp .config /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/tinyconfig
+ 1367  cat tinyconfig 
+ 1368  ls /tmp/
+ 1369  cd ..
+ 1370  cd busybox-1.32.0/
+ 1371  ls
+ 1372  cat make_single_applets.sh 
+ 1373  ls
+ 1374  ls .config
+ 1375  cd /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/
+ 1376  ls
+ 1377  cat myInitRamfs.gz 
+ 1378  ls
+ 1379  tar -czvf ~/myInitramfs_mk_install.gz /tmp/initramfs
+ 1380  tar -czvf ~/myInitramfs_mk_install.gz /tmp/initramfs/
+ 1381  mkdir /tmp/initramfs
+ 1382  tar -czvf ~/myInitramfs_mk_install.gz /tmp/initramfs/
+ 1383  tar -czvf ./myInitramfs_mk_install.gz /tmp/initramfs/
+ 1384  ls
+ 1385  mkdir extract_initRamFS
+ 1386  cd extract_initRamFS/
+ 1387  gzip -dc ../myInitramfs_mk_install.gz  > initramfs.cpio
+ 1388  ls
+ 1389  cpio -idmv <initramfs.cpio 
+ 1390  ls
+ 1391  ls ./tmp/
+ 1392  ls ./tmp/initramfs/
+ 1393  gzip -dc ../myInitRamfs.gz  > initramfs.cpio
+ 1394  ls
+ 1395  cpio -idmv <initramfs.cpio 
+ 1396  ls
+ 1397  ls ./tmp/initramfs/
+ 1398  cd myInitRamfs/
+ 1399  ls
+ 1400  gzip -dc ../myInitramfs_mk_install.gz  > initramfs.cpio
+ 1401  ls
+ 1402  cd ..
+ 1403  gzip -dc ../myInitramfs_mk_install.gz  > initramfs.cpio
+ 1404  ls
+ 1405  rm *.*
+ 1406  ls
+ 1407  rm -rf myInitRamfs/ tmp
+ 1408  ls
+ 1409  gzip -dc ../myInitramfs_mk_install.gz  > initramfs.cpio
+ 1410  ls
+ 1411  cpio -idmv < initramfs.cpio 
+ 1412  ls
+ 1413  cd tmp/
+ 1414  ls
+ 1415  cd initramfs/
+ 1416  ls
+ 1417  cd ..
+ 1418  cd..
+ 1419  cd ..
+ 1420  ls
+ 1421  cd ..
+ 1422  ls
+ 1423  file myInitramfs_mk_install.gz 
+ 1424  history
+ 1425  cd
+ 1426  cd arm-kernel/linux-6.6/
+ 1427  ls
+ 1428  cat tinyconfig 
+ 1429  ls
+ 1430  ls /tmp/
+ 1431  ls /tmp/initramfs/
+ 1432  cd /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/
+ 1433  ls
+ 1434  # 1. Create the target directory
+ 1435  mkdir -p /tmp/initramfs
+ 1436  gunzip -c myInitramfs_mk_install.gz | (cd /tmp/initramfs && cpio -idmv)l
+ 1437  ls /tmp/initramfs/
+ 1438  ls /tmp/initramfs/tmp
+ 1439  ls /tmp/initramfs/tmp/initramfs/
+ 1440  ls
+ 1441  history
+ 1442  cd
+ 1443  cd arm-kernel/
+ 1444  cd linux-6.6/
+ 1445  ls
+ 1446  cat tinyconfig_vmlinux.sh 
+ 1447  history
+ 1448  ls /tmp/initramfs/
+ 1449  rm -rf /tmp/initramfs/
+ 1450  ls
+ 1451  ls /tmp/initramfs/
+ 1452  mkdir -p /tmp/initramfs
+ 1453  gunzip -c myInitRamfs.gz | (cd /tmp/initramfs && cpio -idmv)
+ 1454  gunzip -c ./sim/work_good/myInitRamfs.gz | (cd /tmp/initramfs && cpio -idmv)
+ 1455  ls -l /tmp/initramfs
+ 1456  ls -l /tmp/initramfs/myInitRamfs/
+ 1457  ls -l /tmp/initramfs/myInitRamfs/lib/modules/6.6.0/kernel/
+ 1458  ls -l /tmp/initramfs/myInitRamfs/lib/modules/6.6.0/kernel/drivers/mmio_demo/
+ 1459  cd /tmp/initramfs/
+ 1460  ls
+ 1461  cp ./myInitRamfs/* .
+ 1462  sudo cp -rf ./myInitRamfs/* .
+ 1463  ls
+ 1464  rm myInitRamfs/
+ 1465  rm -rfmyInitRamfs/
+ 1466  rm -rf myInitRamfs/
+ 1467  ls
+ 1468  ls lib/modules/6.6.0/kernel/drivers/mmio_demo/
+ 1469  cd
+ 1470  cd nano tinyconfig_vmlinux.sh
+ 1471  nano tinyconfig_vmlinux.sh
+ 1472  cd /tmp/initramfs/
+ 1473  ls
+ 1474  find . -print0 | cpio --null -ov --format=newc > /home/jusgowiturs/initramfs.cpio
+ 1475  cd 
+ 1476  ls
+ 1477  ll
+ 1478  date
+ 1479  gzip -9 /initramfs.cpio
+ 1480  gzip -9 initramfs.cpio
+ 1481  ls
+ 1482  chmod +x tinyconfig_vmlinux.sh 
+ 1483  ls
+ 1484  cp tinyconfig_vmlinux.sh arm-kernel/linux-6.6/
+ 1485  ls
+ 1486  cd arm-kernel/linux-6.6/
+ 1487  ls
+ 1488  cat tinyconfig_vmlinux.sh 
+ 1489  ./tinyconfig_vmlinux.sh 
+ 1490  cat tiny
+ 1491  cat tinyconfig_vmlinux.sh 
+ 1492  cat -n tinyconfig_vmlinux.sh 
+ 1493  nano tinyconfig_vmlinux.sh 
+ 1494  make clean
+ 1495  nano tinyconfig_vmlinux.sh 
+ 1496  ./tinyconfig_vmlinux.sh 
+ 1497  cp vmlinux /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/tinyconfig_vmlinux/.
+ 1498  cp .config /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/tinyconfig_vmlinux/tinyconfig
+ 1499  cp arch/arm/boot/dts/xilinx/zynq-zed.dts /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/tinyconfig_vmlinux/.
+ 1500  echo $ARCH
+ 1501  make -j$(nproc) dtbs ARCHH=arm CROSS_COMPILE=arm-linux-gnueabihf-
+ 1502  make -j$(nproc) dtbs ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
+ 1503  make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- olddefconfig
+ 1504  make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- tinyconfig
+ 1505  cat tinyconfig_vmlinux.sh 
+ 1506  nano tinyconfig_vmlinux.sh 
+ 1507  rm tinyconfig_vmlinux.sh 
+ 1508  nano tinyconfig_vmlnux.sh
+ 1509  chmod +x tinyconfig_vmlnux.sh 
+ 1510  ./tinyconfig_vmlnux.sh 
+ 1511  ls arch/arm/boot/dts/xilinx/
+ 1512  cp vmlinux /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/tinyconfig/.
+ 1513  cp vmlinux /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/tinyconfig/
+ 1514  cp vmlinux /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/tinyconfig_vmlinux/
+ 1515  cp .config /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/tinyconfig_vmlinux/tinyconfig
+ 1516  cp arch/arm/boot/dts/xilinx/zynq-zed.dt* /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/tinyconfig_vmlinux/
+ 1517  cp /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week05_renode/week5_zynq.resc /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/
+ 1518  ls
+ 1519  cd
+ 1520  ls
+ 1521  cp /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/Bigvarient/vmlinux /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week05_renode/binfiles/.
+ 1522  ls /tmp/initramfs/
+ 1523  cd arm-kernel/linux-6.6/
+ 1524  export PATH_TO_ARM_ROOTFS=/tmp/initramfs
+ 1525  export PATH_TO_ARM_KERNEL=~/arm-kernel/linux-6.6
+ 1526  make clean
+ 1527  make mrproper
+ 1528  sim='/mnt/d/BS_ES/EL_FPGA/bses-linux-fpga/bses-linux-fpga'
+ 1529  echo $sim
+ 1530  cp $sim/week04_renode/config-linux .config
+ 1531  sim='/mnt/d/BS_ES/EL_FPGA/bses-linux-fpga/bses-linux-fpga/sim'
+ 1532  cp $sim/week04_renode/config-linux .config
+ 1533  grep INITRAMFS .config
+ 1534  arm-linux-gnueabi-gcc --version
+ 1535  echo arm-linux-gnueabi-gcc --version
+ 1536  echo $arm-linux-gnueabi-gcc --version
+ 1537  echo $(arm-linux-gnueabi-gcc --version)
+ 1538  make -j$(nproc) ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
+ 1539  cp vmlinux /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week04_renode/binfiles/vmlinux_week_04
+ 1540  cp arch/arm/boot/dts/xilinx/zynq-zed.dt* /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week04_renode/binfiles/.
+ 1541  cd /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week06_platform_driver/
+ 1542  ls
+ 1543  cat README.md 
+ 1544  ls
+ 1545  export ARCH=arm
+ 1546  export CROSS_COMPILE=arm-linux-gnueabihf-
+ 1547  export PATH_TO_ARM_ROOTFS=/tmp/initramfs
+ 1548  export PATH_TO_ARM_KERNEL=~/arm-kernel/linux-6.6
+ 1549  make KDIR=$PATH_TO_ARM_KERNEL
+ 1550  ls
+ 1551  ls /tmp/initramfs/
+ 1552  echo $KDIR
+ 1553  echo$PATH_TO_ARM_KERNEL
+ 1554  echo $PATH_TO_ARM_KERNEL
+ 1555  make -C "$PATH_TO_ARM_KERNEL" M="$(pwd)" modules_install INSTALL_MOD_PATH=/tmp/initramfs
+ 1556  ls /tmp/initramfs/lib/modules/6.6.0/kernel/drivers
+ 1557  ls
+ 1558  echo $ARCH
+ 1559  make -C KDIR=$PATH_TO_ARM_KERNEL M=$(pwd) modules
+ 1560  KDIR=/home/jusgowiturs/arm-kernel/linux6.6.0
+ 1561  make -C $PATH_TO_ARM_KERNEL M="$(pwd)" modules_install INSTALL_MOD_PATH=/tmp/initramfs
+ 1562  make -C $KDIR M="$(pwd)" modules_install INSTALL_MOD_PATH=/tmp/initramfs
+ 1563  make -C $PATH_TO_ARM_KERNEL M=$(pwd) modules
+ 1564  make -C $KDIR M="$(pwd)" modules_install INSTALL_MOD_PATH=/tmp/initramfs
+ 1565  make -C $PATH_TO_ARM_KERNEL M="$(pwd)" modules_install INSTALL_MOD_PATH=/tmp/initramfs
+ 1566  sudo make -C $PATH_TO_ARM_KERNEL M="$(pwd)" modules_install INSTALL_MOD_PATH=/tmp/initramfs
+ 1567  cd ../week06_fft_block_demo/
+ 1568  l
+ 1569  ls
+ 1570  sudo make -C $PATH_TO_ARM_KERNEL M="$(pwd)" modules_install INSTALL_MOD_PATH=/tmp/initramfs
+ 1571  ls
+ 1572  make -C $PATH_TO_ARM_KERNEL M=$(pwd) modules
+ 1573  sudo make -C $PATH_TO_ARM_KERNEL M="$(pwd)" modules_install INSTALL_MOD_PATH=/tmp/initramfs
+ 1574  ls
+ 1575  ls /tmp/initramfs/lib/modules/6.6.0/kernel
+ 1576  ls /tmp/initramfs/lib/modules/6.6.0/kernel/drivers/
+ 1577  ls /tmp/initramfs/lib/modules/
+ 1578  ls /tmp/initramfs/lib/
+ 1579  find *smart*timer*
+ 1580  sudo make -C $PATH_TO_ARM_KERNEL M="$(pwd)" modules_install INSTALL_MOD_PATH=/tmp/initramfs
+ 1581  ls -l /tmp/initramfs/lib/modules/6.6.0/updates/
+ 1582  ls /tmp/initramfs/lib/modules/6.6.0/updates/
+ 1583  cd 
+ 1584  cd arm-kernel/linux-6.6/
+ 1585  make -j$(nproc) ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
+ 1586  p vmlinux /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week06_renode/binfiles/vmlinux_week6
+ 1587  cp vmlinux /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week06_renode/binfiles/vmlinux_week6
+ 1588  cp arch/arm/boot/dts/xilinx/zynq-zed.dt* /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week06_renode/binfiles/.
+ 1589  cd /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week06_renode/
+ 1590  ls
+ 1591  vimdiff ./binfiles/zynq-zed.dts ./dts/zynq-zed-week6.dts 
+ 1592  ls
+ 1593  cd sim/week06_renode/
+ 1594  ls
+ 1595  cd ../week05_mmio_demo/
+ 1596  ls
+ 1597  cd
+ 1598  cd arm-kernel/linux-6.6/
+ 1599  ls arch/arm/boot/zImage 
+ 1600  ls -l arch/arm/boot/zImage 
+ 1601  man mkimage
+ 1602  cd
+ 1603  cd arm-kernel/linux-6.6/
+ 1604  ls
+ 1605  cat tinyconfig_vmlnux.sh 
+ 1606  cp tinyconfig_vmlnux.sh /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/work_good/tinyconfig_vmlinux/.
+ 1607  sudo mkfs.vfat -I \.\PHYSICALDRIVE1
+ 1608  cd
+ 1609  cd arm-kernel/linux-6.6/
+ 1610  ls -l arch/arm/boot/
+ 1611  mkdir ~SDCARD
+ 1612  ls ~
+ 1613  mkdir ~/SDCARD
+ 1614  ls ~
+ 1615  ls
+ 1616  cp arch/arm/boot/zImage ~/SDCARD/.
+ 1617  cp arch/arm/boot/Image ~/SDCARD/.
+ 1618  cp /mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week05_renode/binfiles/zynq-zed-smarttimer.dtb ~/SDCARD/.
+ 1619  ls ~/SDCARD/
+ 1620  man dd
+ 1621  cd ~/SDCARD/
+ 1622  dd if=/dev/zero of=sd_boot.img bs=1M count=512
+ 1623  ls
+ 1624  sudo parted sd_boot.img --script mklabel msdos
+ 1625  sudo parted sd_boot.img --script mkpart primary fat32 1MiB 100%
+ 1626  sudo apt update
+ 1627  sudo apt install parted dosfstools mount util-linux
+ 1628  sudo parted sd_boot.img --script mklabel msdos
+ 1629  sudo parted sd_boot.img --script mkpart primary fat32 1MiB 100%
+ 1630  ls
+ 1631  sudo losetup --find --partscan --show sd_boot.img
+ 1632  ls
+ 1633  sudo mkfs.vfat /dev/loop2p1
+ 1634  ls -l /dev/loop2*
+ 1635  sudo apt install kpartx
+ 1636  sudo kpartx -av /dev/loop2
+ 1637  ls -l /dev/loop2*
+ 1638  ls -l /dev/loop2
+ 1639  ls -l /dev/loop3
+ 1640  sudo losetup --find --show sd_boot.img
+ 1641  sudo kpartx -av /dev/loop1
+ 1642  ls /dev/mapper/
+ 1643  sudo mkfs.vfat /dev/mapper/loop1p1
+ 1644  sudo mount /dev/mapper/loop1p1 /mnt/sd
+ 1645  sudo mkdir -p /mnt/sd
+ 1646  sudo mount /dev/mapper/loop1p1 /mnt/sd
+ 1647  ls /mnt/sd
+ 1648  sudo file -s /dev/mapper/loop1p1
+ 1649  sudo file -s /dev/dm-0
+ 1650  sudo mkdir -p /mnt/sd
+ 1651  sudo mount /dev/mapper/loop1p1 /mnt/sd
+ 1652  mount | grep mapper
+ 1653  cp zImage /mnt/sd/
+ 1654  sudo cp zImage /mnt/sd/
+ 1655  sudo cp *.dtb /mnt/sd/
+ 1656  sudo sync
+ 1657  sudo umount /mnt/sd
+ 1658  sudo kpartx -d /dev/loop1
+ 1659  sudo losetup -d /dev/loop1
+ 1660  ls
+ 1661  cp sd_boot.img /mnt/d/BS_ES/
+ 1662  history 30
+ 1663  history 50
+ 1664  git clone https://github.com/buildroot/buildroot.git
+ 1665  ls
+ 1666  cd buildroot/
+ 1667  ls
+ 1668  make menuconfig
+ 1669  make
+ 1670  ls
+ 1671  cd output/
+ 1672  ls
+ 1673  cd build/
+ 1674  ls
+ 1675  cd buildroot-config/
+ 1676  ls
+ 1677  cd
+ 1678  cd SDCARD/buildroot/
+ 1679  make clean
+ 1680  git clone https://github.com/antmicro/zynq-mkbootimage.git
+ 1681  cd zynq-mkbootimage
+ 1682  make
+ 1683  ls
+ 1684  ./exbootimage 
+ 1685  ./exbootimage BOOT.bin
+ 1686  cd ..
+ 1687  ld
+ 1688  ls
+ 1689  rm -rf buildroot/ zynq-mkbootimage/ 
+ 1690  ls
+ 1691  sudo apt-get install u-boot-tools
+ 1692  cd /mnt/d/BS_ES/EL_FPGA/coco_tb/
+ 1693  ls
+ 1694  mkimage -f image.its image.ub
+ 1695  ls
+ 1696  sudo apt-get install u-boot-tools
+ 1697  mkimage -f image.its image.ub
+ 1698  ls
+ 1699  cp ~/SDCARD/* .
+ 1700  ls
+ 1701  mkimage -f image.its image.ub
+ 1702  ls
+ 1703  mkimage -f image.its image.ub
+ 1704  ls
+ 1705  cd sim/week05_renode/
+ 1706  cd binfiles/
+ 1707  ls
+ 1708  readelf vmlinux
+ 1709  readelf -h vmlinux
+ 1710  readelf -a vmlinux
+ 1711  ls
+ 1712  readelf -a vmlinux_week5 
+ 1713  readelf -h vmlinux_week5 
+ 1714  cd .././
+ 1715  cd ../
+ 1716  ls
+ 1717  mkimage -f image.its image.ub
+ 1718  cp sim/week06_renode/binfiles/zynq-zed-peripherals.dtb .
+ 1719  ls
+ 1720  mkimage -f image.its image.ub
+ 1721  cp sim/week06_renode/dts/zynq-zed-peripherals.dt* .
+ 1722  cp sim/week06_renode/dts/zynq-zed-week6.dts .
+ 1723  dtc -I dts -O dtb zynq-zed-week6.dtb zynq-zed-week6.dts 
+ 1724  dtc -I dts -O dtb -o zynq-zed-week6.dtb zynq-zed-week6.dts 
+ 1725  mkimage -f image.its image.ub
+ 1726  ls
+ 1727  arm-xilinx-linux-gnueabi-readelf -h vmlinux | grep Entry
+ 1728  arm-linux-gnueabi-readelf -h vmlinux | grep Entry
+ 1729  arm-linux-gnueabi-readelf -h zImage | grep Entry
+ 1730  cd
+ 1731  cd arm-kernel/linux-6.6/
+ 1732  grep CONFIG_BLK_DEV_INITRD .config
+ 1733  grep CONFIG_RD_GZIP .config
+ 1734  grep CONFIG_TMPFS .config
+ 1735  grep CONFIG_DEVTMPFS .config
+ 1736  grep CONFIG_MMC .config
+ 1737  grep CONFIG_SERIAL_AMBA_PL011 .config
+ 1738  grep CONFIG_EARLY_PRINTK .config
+ 1739  grep -E "CONFIG_BLK_DEV_INITRD|CONFIG_DEVTMPFS(_MOUNT)?|CONFIG_MMC(_BLOCK)?|CONFIG_SERIAL|CONFIG_EARLY_PRINTK" .config || true
+ 1740  make olddefconfig
+ 1741  make -j$(nproc) ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
+ 1742  cp /mnt/d/BS_ES/EL_FPGA/bses-linux-fpga/bses-linux-fpga/sim/week04_renode/config-linux .config
+ 1743  grep CONFIG_EARLY_PRINTK .config
+ 1744  CONFIG_EARLY_PRINTK=y
+ 1745  grep CONFIG_EARLY_PRINTK .config
+ 1746  CONFIG_EARLY_PRINTK=y >.config
+ 1747  grep CONFIG_EARLY_PRINTK .config
+ 1748  cat .config
+ 1749  cp /mnt/d/BS_ES/EL_FPGA/bses-linux-fpga/bses-linux-fpga/sim/week04_renode/config-linux .config
+ 1750  echo "CONFIG_EARLY_PRINTK=y" >> .config
+ 1751  grep CONFIG_EARLY_PRINTK .config
+ 1752  make oldconfig
+ 1753  grep CONFIG_INITRAMFS_SOURCE .config
+ 1754  ls /tmp/
+ 1755  ls /mnt
+ 1756  ls /
+ 1757  ls /media
+ 1758  ls /mnt
+ 1759  ls /mnt/
+ 1760  ls /mnt/wslg/
+ 1761  lsblk
+ 1762  sudo fdisk -l
+ 1763  ls /mnt
+ 1764  ls /mnt/
+ 1765  man dd
+ 1766  ls /mnt
+ 1767  cd
+ 1768  ls
+ 1769  lsBLK
+ 1770  lsblk
+ 1771  ls
+ 1772  cd wsl
+ 1773  ls
+ 1774  cd
+ 1775  cat /etc/wsl.conf 
+ 1776  cd /mnt/e
+ 1777  cd arm-kernel/linux-6.6/
+ 1778  ls
+ 1779  arm-linux-gnueabi-readelf -h vmlinux | grep Entry
+ 1780  cd
+ 1781  cd arm-kernel/linux-6.6/
+ 1782  ls
+ 1783  find spl 
+ 1784  find spl .
+ 1785  find u-boot.bin .
+ 1786  ls -l u-boot.bin
+ 1787  ls -l .spl/u-boot*
+ 1788  ls -l spl/u-boot*
+ 1789  grep ZYNQ .config
+ 1790  grep CONFIG_SERIAL_AMBA_PL011 .config
+ 1791  grep CONFIG_OF .config
+ 1792  grep CONFIG_USE_OF .config
+ 1793  grep CONFIG_ARCH_ZYNQ .config
+ 1794  export ARCH=arm
+ 1795  export CROSS_COMPILE=arm-linux-gnueabihf-
+ 1796  cd ~/u-boot
+ 1797  export ARCH=arm
+ 1798  export CROSS_COMPILE=arm-linux-gnueabihf-
+ 1799  cd
+ 1800  git clone https://source.denx.de/u-boot/u-boot.git
+ 1801  cd u-boot
+ 1802  git vheckout v2024.01
+ 1803  git checkout v2024.01
+ 1804  make zed_defconfig
+ 1805  echo $ARCH
+ 1806  echo $CROSS_COMPILE
+ 1807  make -j$(nproc)
+ 1808  ls
+ 1809  make zed_defconfig
+ 1810  make distclean
+ 1811  make zed_defconfig
+ 1812  ls arch/arm/dts/
+ 1813  ls arch/arm
+ 1814  cd
+ 1815  cd arm-kernel/linux-6.6/
+ 1816  ls arch/arm/
+ 1817  ls arch/arm/boot/
+ 1818  ls arch/arm/boot/bootp/
+ 1819  ls arch/arm/boot/compressed/
+ 1820  cd
+ 1821  cd u-boot/
+ 1822  find *.bin .
+ 1823  cd /mnt/d/BS_ES/EL_FPGA/bses-linux-fpga/bses-linux-fpga/
+ 1824  ls
+ 1825  git pull
+ 1826  git add ./DSD/END_TERM/sep_2025/set_a.md 
+ 1827  ls
+ 1828  cd DSD/
+ 1829  git add END_TERM/sep_2025/set_a.md 
+ 1830  git commit -m "Review comments given by Asuthosh are incorporated"
+ 1831  git push
+ 1832  git add END_TERM/sep_2025/set_a.md 
+ 1833  cd DSD/
+ 1834  git add END_TERM/sep_2025/set_a.md 
+ 1835  git commit -m "Minor modification in options"
+ 1836  git push
+ 1837  la
+ 1838  mkimage -f Image.its image.ub
+ 1839  iminfo image.ub
+ 1840  dtc -I dts -O dtb zynq-zed-week6.dts -o zynq-zed-week6.dtb
+ 1841  iminfo image.ub
+ 1842  mkimage -f Image.its image.ub
+ 1843  ls /media/
+ 1844  ls /media/$USER/BOOT
+ 1845  ls /media/$USER
+ 1846  ls /media
+ 1847  ls /media/
+ 1848  ls /media
+ 1849  ls /mnt/e
+ 1850  ls /mnt/E
+ 1851  ls /mnt
+ 1852  ls  /mnt/sd
+ 1853  ls
+ 1854  cd /mnt/sd
+ 1855  ls
+ 1856  ls .mnt
+ 1857  ls /mnt
+ 1858  lsblk
+ 1859  mkdir -p /mnt/e
+ 1860  sudo mkdir -p /mnt/e
+ 1861  ls /mnt
+ 1862  cd e
+ 1863  cd /mnte
+ 1864  cd /mnt/e
+ 1865  ls
+ 1866  sudo mount -t drvfs E: /mnt/e
+ 1867  ls
+ 1868  cd
+ 1869  sudo mkdir -p /mnt/e
+ 1870  sudo mount -t drvfs E: /mnt/e
+ 1871  ls /mnt/e
+ 1872  cd arm-kernel/
+ 1873  cd linux-6.6/
+ 1874  make CROSS_COMPILE=arm-linux-gnueabihf- ARCH=arm zynq_zed_defconfig
+ 1875  make CROSS_COMPILE=arm-linux-gnueabihf- ARCH=arm xilinx_zynq_defconfig
+ 1876  cd
+ 1877  ls
+ 1878  cd u-boot/
+ 1879  ls
+ 1880  make CROSS_COMPILE=arm-linux-gnueabihf- ARCH=arm zynq_zed_defconfig
+ 1881  cd ..
+ 1882  ls
+ 1883  rm -rf u-boot/
+ 1884  git clone https://github.com/Xilinx/u-boot-xlnx.git
+ 1885  cd u-boot-xlnx/
+ 1886  ls
+ 1887  export ARCH=arm
+ 1888  expot CROSS_COMPILE=arm-linux-gnueabihf-
+ 1889  export CROSS_COMPILE=arm-linux-gnueabihf-
+ 1890  make distclean
+ 1891  make xilinx_zynq_defconfig
+ 1892  make distclean
+ 1893  git add .
+ 1894  git status
+ 1895  git add .
+ 1896  git status
+ 1897  git add .
+ 1898  git status
+ 1899  git commit -m "added files"
+ 1900  git push
+ 1901  git add .
+ 1902  git check-ignore -v sd_boot.img
+ 1903  git check-ignore -v *.img
+ 1904  git status
+ 1905  git add .
+ 1906  git status
+ 1907  git commit -m "git ignore modifed"
+ 1908  git push
+ 1909  ls
+ 1910  git add .
+ 1911  git reset HEAD
+ 1912  git rm -r --cached busybox
+ 1913  git rm -r --cached sim
+ 1914  git add .
+ 1915  git commit -m "vmlinux steps yet to clean up"
+ 1916  git push
+ 1917  git rm --cached sd_boot.img
+ 1918  git pull 
+ 1919  git push
+ 1920  git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | sort -k3 -n -r | head -20
+ 1921  sudo apt install git-filter-repo
+ 1922  git filter-repo   --invert-paths   --path sd_boot.img   --path sim/week04_renode/Compiled/vmlinux   --path sim/week04_renode/Compiled/New_Image/vmlinux   --path sim/week04_renode/binfiles/vmlinux   --path busybox/
+ 1923  git add .gitignore
+ 1924  git commit -m "Ignore large build artifacts and binaries"
+ 1925  git push
+ 1926  git pull
+ 1927  git remote -v
+ 1928  git pull --force
+ 1929  git clone https://github.com/jusgowiturs/cocotb_demo.git
+ 1930  git add .
+ 1931  cd cocotb_demo/
+ 1932  git add .
+ 1933  git status
+ 1934  git commit -m "Step to backup SD"
+ 1935  git push
+ 1936  ls
+ 1937  mkimage -f image.its image.ub
+ 1938  cd
+ 1939  cd arm-kernel/linux-6.6/
+ 1940  arm-xilinx-linux-gnueabi-readelf -h vmlinux | grep Entry
+ 1941  ls
+ 1942  arm-xilinx-linux-gnueabi -readelf -h vmlinux | grep Entry
+ 1943  arm-xilinx-linux-readelf -h vmlinux | grep Entry
+ 1944  arm-none-eabi-readelf -h vmlinux | grep Entry
+ 1945  cd arch/arm/boot/
+ 1946  ls
+ 1947  file zImage
+ 1948  arm-none-eabi-objdump -D -m arm zImage | head
+ 1949  cd
+ 1950  cd arm-kernel/linux-6.6/
+ 1951  arm-none-eabi-readelf -h vmlinux | grep Entry
+ 1952  mkimage -f image.its image.ub
+ 1953  cd /mnt/d/BS_ES/EL_FPGA/coco_tb/cocotb_demo/
+ 1954  ls
+ 1955  mkimage -f image.its image.ub
+ 1956  cd arm-kernel/linux-6.6/
+ 1957  cd ~/arm-kernel/linux-6.6/
+ 1958  arm-none-eabi-readelf -h vmlinux | grep Entry
+ 1959  mkimage -f image.its image.ub
+ 1960  cd /mnt/d/BS_ES/EL_FPGA/coco_tb/cocotb_demo/
+ 1961  mkimage -f image.its image.ub
+ 1962  file zImage 
+ 1963  hexdump zImage
+ 1964  hexdump zImage | head
+ 1965  mkimage -A arm -O linux -T kernel -C none -a 0x02000000 -e 0x02000000 -n "PYNQ Kernel" -d zImage uImage
+ 1966  mkimage -f image.its image.ub
+ 1967  mkimage -A arm -T script -C none -n "Boot Script for PYNQ" -d boot.cmd boot.scr
+ 1968  mkimage -f image.its uImage
+ 1969  git add Final_steps_to_sd.md 
+ 1970  cd cocotb_demo/
+ 1971  git add Final_steps_to_sd.md 
+ 1972  ls
+ 1973  ls Fin*
+ 1974  cd Working_model/
+ 1975  ls
+ 1976  cd ..
+ 1977  ls
+ 1978  cd ..
+ 1979  ls
+ 1980  cd cocotb_demo/
+ 1981  git add ../Final_steps_to_sd.md 
+ 1982  cp ../Final_steps_to_sd.md .
+ 1983  git add Final_steps_to_sd.md 
+ 1984  git commit -m "Make bootabe SD card "
+ 1985  git push
+ 1986  cdsim
+ 1987  cd  sim
+ 1988  cd cocotb_demo/sim/week04_mmio_demo/
+ 1989  la
+ 1990  ls
+ 1991  cat Makefile 
+ 1992  vi Makefile 
+ 1993  nano Mk
+ 1994  nano Ma
+ 1995  nano Makefile 
+ 1996  ls /home/jusgowiturs/arm-kernel/linux-6.6/
+ 1997  nano Makefile 
+ 1998  make
+ 1999  ls
+ 2000  history
+ 2001  history >> history.txt

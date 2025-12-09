@@ -1,0 +1,4 @@
+find ~ -type d -name "cocotb" 2>/dev/null
+
+/home/jusgowiturs/.cache/uv/archive-v0/Kc_12qxRccf8-btegXRYE/cocotb
+/home/jusgowiturs/.cache/uv/wheels-v5/pypi/cocotb

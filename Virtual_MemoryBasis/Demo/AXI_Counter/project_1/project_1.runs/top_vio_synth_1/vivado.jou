@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.2.2 (64-bit)
+# SW Build 3788238 on Tue Feb 21 20:00:34 MST 2023
+# IP Build 3783773 on Tue Feb 21 23:41:56 MST 2023
+# Start of session at: Thu Sep 11 17:33:55 2025
+# Process ID: 22420
+# Current directory: D:/BS_ES/EL_FPGA/Demo/AXI_Counter/project_1/project_1.runs/top_vio_synth_1
+# Command line: vivado.exe -log top_vio.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_vio.tcl
+# Log file: D:/BS_ES/EL_FPGA/Demo/AXI_Counter/project_1/project_1.runs/top_vio_synth_1/top_vio.vds
+# Journal file: D:/BS_ES/EL_FPGA/Demo/AXI_Counter/project_1/project_1.runs/top_vio_synth_1\vivado.jou
+# Running On: NPTEL007, OS: Windows, CPU Frequency: 2189 MHz, CPU Physical cores: 12, Host memory: 16876 MB
+#-----------------------------------------------------------
+source top_vio.tcl -notrace
