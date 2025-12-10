@@ -13,3 +13,6 @@ uImage
 zImage
 *.ub
 *.itb
+SD_Card_items/
+linuxbuild/
+SRC/
