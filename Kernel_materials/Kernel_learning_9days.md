@@ -1,75 +1,61 @@
-🧱 DAY 1 — Kernel Module Basics (3 hours)
-🎯 Goal
+# 🧱 DAY 1 — Kernel Module Basics (3 hours)
 
-Understand what a kernel module really is.
+## 🎯 Goal
 
-Tasks
+- Understand what a kernel module really is.
+- Tasks
+- Write Hello Kernel Module
+- Use:
+    - module_init
+    - module_exit
+    - pr_info
+- Load/unload:
 
-Write Hello Kernel Module
-
-Use:
-
-module_init
-
-module_exit
-
-pr_info
-
-Load/unload:
-
+```
 insmod hello.ko
 rmmod hello
 dmesg
+```
 
-Concepts to Understand
+## Concepts to understand
+- `THIS_MODULE`
+- Kernel vs. userspace
+- Why `MODULE_LICENSE("GPL")` matters
 
-What is THIS_MODULE
+## ❌ Don’t
+- Don’t touch sysfs
+- Don’t touch device drivers
 
-Difference between kernel & userspace
+---
 
-Why MODULE_LICENSE("GPL") matters
+# 🧰 DAY 2 — Kernel Build System & Makefile (2.5 hours)
 
-❌ Don’t
+## 🎯 Goal
+- Understand how source becomes a `.ko`.
 
-Don’t touch sysfs
-
-Don’t touch device drivers
-
-🧰 DAY 2 — Kernel Build System & Makefile (2.5 hours)
-🎯 Goal
-
-Understand how your code becomes a .ko
-
-Tasks
-
-Study this line deeply:
-
+## Tasks
+- Study this line closely:
+```bash
 make -C $(KDIR) M=$(PWD) modules
-
-
-Build with:
-
+```
+- Build with:
+```bash
 make
 make clean
+```
 
-Concepts
+## Concepts
+- `obj-m`
+- `Module.symvers`
+- `modules.order`
+- Build flow overview — be able to explain verbally
 
-Meaning of:
+---
 
-obj-m
+# 🧠 DAY 3 — Memory, Sections & Static Variables (3 hours)
 
-Module.symvers
-
-modules.order
-
-Outcome
-
-You should be able to explain the build flow verbally.
-
-🧠 DAY 3 — Memory, Sections & Static Variables (3 hours)
-🎯 Goal
-
-Stop guessing about memory.
+## 🎯 Goal
+- Stop guessing about memory layout.
 
 Learn
 
@@ -83,197 +69,161 @@ stack vs heap
 
 static keyword
 
-Practice
+## Practice
+- Answer: Why is `static unsigned long phys_base;` initialized to 0?
+    - Because it lives in `.bss`
 
-Answer confidently:
+## ❌ Don’t
+- Don’t use `kmalloc` yet
 
-Why is static unsigned long phys_base; initialized to 0?
+---
 
-✔ Because it lives in .bss
+# 📦 DAY 4 — Character Device (Basics) (3 hours)
 
-❌ Don’t
+## 🎯 Goal
+- Understand `file_operations`.
 
-Don’t use kmalloc yet
+## Tasks
+- Implement `.open` and `.read`
+- Register char device and create `/dev` node
 
-📦 DAY 4 — Character Device (Basics) (3 hours)
-🎯 Goal
+## Concepts
+- Who calls `.read()`?
+- What is `copy_to_user()`?
 
-Understand file_operations
-
-Tasks
-
-Implement:
-
-.open
-
-.read
-
-Register char device
-
-Create /dev node
-
-Concepts
-
-Who calls .read()?
-
-What is copy_to_user()?
-
-Important
-
-Understand this structure:
-
+## Example
+```c
 static const struct file_operations fops = {
-    .owner = THIS_MODULE,
-    .read  = demo_read,
+        .owner = THIS_MODULE,
+        .read  = demo_read,
 };
+```
 
-🪟 DAY 5 — sysfs (Very Important) (3 hours)
-🎯 Goal
+---
 
-Clean kernel ↔ user interface
+# 🪟 DAY 5 — sysfs (Very Important) (3 hours)
 
-Tasks
+## 🎯 Goal
+- Provide a clean kernel ↔ user interface.
 
-Create sysfs attribute:
-
+## Tasks
+- Create sysfs attribute:
+```c
 DEVICE_ATTR_RW(ctrl);
+```
+- Implement `ctrl_show` and `ctrl_store`
 
+## Concepts
+- Why text-based interfaces?
+- Why locking is required
+- Why use `kstrtoul()`
+- How `ctrl` links to `ctrl_show()` and `ctrl_store()`
 
-Implement:
+---
 
-ctrl_show
+# 🔒 DAY 6 — Concurrency & Locking (2.5 hours)
 
-ctrl_store
+## 🎯 Goal
+- Avoid race conditions.
 
-Concepts
+## Learn
+- `mutex`
+- When kernel code can sleep
+- Why sysfs callbacks are sleep-safe
 
-Why text-based?
+## Practice
+- Protect shared variables
+- Remove lock intentionally to observe the bug
 
-Why locking is required
+---
 
-Why kstrtoul() is used
+# 🔌 DAY 7 — Platform Driver + MMIO (3 hours)
 
-You must clearly understand:
+## 🎯 Goal
+- Real embedded driver structure.
 
-How ctrl gets linked to ctrl_show() and ctrl_store()
+## Tasks
+- Write a platform driver implementing:
+    - `probe()`
+    - `remove()`
+- Use `ioremap`, `readl`, `writel`
 
-🔒 DAY 6 — Concurrency & Locking (2.5 hours)
-🎯 Goal
+## Concepts
+- Device Tree basics
+- Why `probe()` is called automatically
 
-Avoid race conditions
+---
 
-Learn
+# 🧪 DAY 8 — Emulation using Renode (3 hours)
 
-mutex
+## 🎯 Goal
+- Test without hardware.
 
-When kernel code can sleep
-
-Why sysfs callbacks sleep-safe
-
-Practice
-
-Protect shared variables
-
-Remove lock and understand the bug
-
-🔌 DAY 7 — Platform Driver + MMIO (3 hours)
-🎯 Goal
-
-Real embedded driver structure
-
-Tasks
-
-Write platform driver
-
-Implement:
-
-probe()
-
-remove()
-
-Use:
-
-ioremap
-
-readl / writel
-
-Concepts
-
-Device Tree
-
-Why probe is called automatically
-
-🧪 DAY 8 — Emulation using Renode (3 hours)
-🎯 Goal
-
-Test without hardware
-
-Tasks
-
-Boot kernel in Renode
-
-Load module:
-
+## Tasks
+- Boot kernel in Renode
+- Load module:
+```bash
 insmod simple_kernel_module.ko
-
-
-Test:
-
+```
+- Test:
+```bash
 cat /sys/.../ctrl
 echo 0x1 > /sys/.../ctrl
+```
 
-Learn
+## Learn
+- Debug via `dmesg`
+- Observe MMIO behavior
 
-Debug via dmesg
+---
 
-Observe MMIO behavior
+# 🧹 DAY 9 — Cleanup, Install & depmod (2.5 hours)
 
-🧹 DAY 9 — Cleanup, Install & depmod (2.5 hours)
-🎯 Goal
+## 🎯 Goal
+- Professional workflow.
 
-Professional workflow
-
-Tasks
-
-Use:
-
+## Tasks
+- Install and register modules:
+```bash
 make modules_install
 depmod -a
 modprobe simple_kernel_module
+```
 
+## Understand
+- `/lib/modules/$(uname -r)/updates/`
+- `modules.dep`
 
-Understand:
+---
 
-/lib/modules/$(uname -r)/updates/
-
-modules.dep
-
-🏁 Final Outcome (After 9 Days)
-
+# 🏁 Final Outcome (After 9 Days)
 You will be able to:
-✔ Write a kernel module from scratch
-✔ Explain build system
-✔ Create sysfs & char interfaces
-✔ Handle MMIO safely
-✔ Emulate & test using Renode
-✔ Debug kernel issues confidently
+- Write a kernel module from scratch
+- Explain the build system
+- Create sysfs & char interfaces
+- Handle MMIO safely
+- Emulate & test using Renode
+- Debug kernel issues confidently
 
-🕒 Summary Table
-Day	Topic	Hours
-1	Hello module	3
-2	Build system	2.5
-3	Memory model	3
-4	Char device	3
-5	sysfs	3
-6	Locking	2.5
-7	Platform driver	3
-8	Renode	3
-9	Install & cleanup	2.5
+---
 
-👉 Total ≈ 25 hours
+# 🕒 Summary Table
 
-💡 Final Advice (Important)
+| Day | Topic                 | Hours |
+|-----|-----------------------|-------|
+| 1   | Hello module          | 3     |
+| 2   | Build system          | 2.5   |
+| 3   | Memory model          | 3     |
+| 4   | Char device           | 3     |
+| 5   | sysfs                 | 3     |
+| 6   | Locking               | 2.5   |
+| 7   | Platform driver       | 3     |
+| 8   | Renode                | 3     |
+| 9   | Install & cleanup     | 2.5   |
 
-Understanding beats speed.
+Total ≈ 25 hours
 
-If one day slips, don’t rush — kernel learning compounds.
+---
+
+## 💡 Final Advice
+Understanding beats speed. If one day slips, don’t rush — kernel learning compounds.
