@@ -1,0 +1,3 @@
+kernel_image=zImage
+dtb_image=system.dtb
+bootargs=console=ttyPS1,115200 earlycon=cdns,mmio,0xE0001000,115200n8 rdinit=/init

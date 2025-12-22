@@ -1,0 +1,9 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1758695762" />
+    <testcase name="config_run_wrap_and_w1c" classname="test_timer" file="/mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week02_timer/tests/test_timer.py" lineno="34" time="0.03717398643493652" sim_time_ns="430.001" ratio_time="11567.255525651139" />
+    <testcase name="clear_status_w1c" classname="test_timer" file="/mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week02_timer/tests/test_timer.py" lineno="67" time="0.02410602569580078" sim_time_ns="440.001" ratio_time="18252.739192783953" />
+    <testcase name="reset_self_clear" classname="test_timer" file="/mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week02_timer/tests/test_timer.py" lineno="95" time="0.011335372924804688" sim_time_ns="140.0010000000001" ratio_time="12350.806711761745" />
+    <testcase name="update_pending_commits_on_wrap" classname="test_timer" file="/mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week02_timer/tests/test_timer.py" lineno="109" time="0.023227214813232422" sim_time_ns="470.00099999999986" ratio_time="20234.927165363053" />
+  </testsuite>
+</testsuites>

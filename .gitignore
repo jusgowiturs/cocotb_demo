@@ -16,3 +16,12 @@ zImage
 SD_Card_items/
 linuxbuild/
 SRC/
+!Makefile*
+!*.md
+!*.c
+!*/
+
+
+
+
+

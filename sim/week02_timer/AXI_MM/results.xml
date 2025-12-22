@@ -1,0 +1,8 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1759746872" />
+    <testcase name="test_mem_mapped_regs" classname="axi_mmio_tb" file="/mnt/d/BS_ES/EL_FPGA/coco_tb/sim/week02_timer/AXI_MM/axi_mmio_tb.py" lineno="16" time="82343.78213453293" sim_time_ns="5918830.0" ratio_time="71.87950136089013">
+      <failure message="Test failed with RANDOM_SEED=1759746872" />
+    </testcase>
+  </testsuite>
+</testsuites>
