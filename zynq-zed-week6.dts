@@ -207,7 +207,7 @@
 
         serial@e0000000 {
             compatible = "xlnx,xuartps", "cdns,uart-r1p8";
-            status = "disabled";
+            status = "okay";
             clocks = <0x01 0x17 0x01 0x28>;
             clock-names = "uart_clk", "pclk";
             reg = <0xe0000000 0x1000>;
