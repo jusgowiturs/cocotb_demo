@@ -111,3 +111,50 @@ sudo apt install device-tree-compiler
 dtc -I dtb -O dts -o zynq-zed-peripherals.dts zynq-zed-peripherals.dtb
 
 ```
+
+
+
+
+# Install Required Tools
+- Ensure you have the U-Boot tools installed on your Linux host:
+```
+sudo apt-get install u-boot-tools //Ubuntu/Debian
+sudo yum install u-boot-tools //RHEL/CentOS
+```
+## Identify Sub-Image Positions
+First, list the contents of the FIT image to find the numeric index (position) of each component. 
+```bash
+dumpimage -l image.ub
+```
+- Use code with caution.
+
+Look for the Image X headers in the output. Typically, Image 0 is the kernel, Image 1 is the ramdisk (initrd), and Image 2 is the FDT (device tree). 
+3. Extract the Components
+Use the following commands to extract each part based on its identified position: 
+Extract Kernel Image:
+bash
+dumpimage -T flat_dt -p 0 -o kernel.image image.ub
+Use code with caution.
+
+Extract Device Tree Blob (.dtb):
+bash
+dumpimage -T flat_dt -p 2 -o system.dtb image.ub
+Use code with caution.
+
+Extract Ramdisk/Initrd (.bin/.cpio):
+bash
+dumpimage -T flat_dt -p 1 -o ramdisk.bin image.ub
+Use code with caution.
+
+(Note: Replace -p 0, -p 1, etc., with the exact positions found in your dumpimage -l output.) 
+4. Optional: Decompress the Kernel
+If the extracted ke
+
+
+dumpimage -T flat_dt -p 0 -o kernel.image image.ub
+Image contains unit addresses @, this will break signing
+
+
+
+dumpimage -T flat_dt -p 0 -o kernel.image image.ub
+Image contains unit addresses @, this will break signing
