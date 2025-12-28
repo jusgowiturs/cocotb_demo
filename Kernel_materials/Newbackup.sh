@@ -3,10 +3,10 @@
 # Copies only necessary files for out-of-tree ARM module builds
 
 # Source kernel path
-SRC_KERNEL=~/arm-kernel/linux-6.6
-
+SRC_KERNEL=/home/jusgowiturs/arm-linux/linux-6.6
+#mkdir KERNEL_SRC
 # Destination minimal kernel tree
-DEST_KERNEL=./KERNEL_SRC
+DEST_KERNEL=/mnt/d/BS_ES/EL_FPGA/src_img/no_init_emb/KERNEL_SRC
 
 echo "Creating minimal kernel tree at $DEST_KERNEL..."
 
