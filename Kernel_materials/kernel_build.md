@@ -158,3 +158,19 @@ Image contains unit addresses @, this will break signing
 
 dumpimage -T flat_dt -p 0 -o kernel.image image.ub
 Image contains unit addresses @, this will break signing
+
+
+
+Fix Kernel Configuration
+If the above commands show nothing, you must recompile your kernel with these specific options enabled: 
+FPGA Manager Support:
+CONFIG_FPGA=y
+CONFIG_FPGA_MGR_ZYNQ_FPGA=y
+CONFIG_FPGA_REGION=y
+CONFIG_FPGA_BRIDGE=y
+Memory Allocation (Required for PYNQ):
+CONFIG_XILINX_APF=y (Provides /dev/xlnk used for memory allocation)
+CONFIG_DMA_CMA=y (Ensures enough contiguous memory for overlays)
+Userspace I/O (UIO):
+CONFIG_UIO=y
+CONFIG_UIO_PDRV_GENIRQ=y 

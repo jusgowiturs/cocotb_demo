@@ -1,27 +1,91 @@
 
-# Build artifacts / large binaries
-sd_boot.img
-Working_model/
-*.scr
+# Kernel module generated files
+*.o
+*.ko
+*.mod
+*.mod.c
+*.mod.o
+*.symvers
+Module.symvers
+modules.order
+
+# Temporary kernel build dirs
+.tmp_versions/
+
+# Python virtual env
+.venv/
+venv/
+*.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Editor temp files
+*~
+*.swp
+# Kernel generated files
+*.o
+*.ko
+*.mod
+*.mod.c
+*.mod.o
 *.cmd
-sim/
-busybox/
-*.bin
+*.symvers
+Module.symvers
+modules.order
+
+# Hidden kernel command files
+.*.cmd
+
+# Images / boot artifacts
 *.img
-vmlinux
+*.ub
 uImage
 zImage
-*.ub
-*.itb
-SD_Card_items/
-linuxbuild/
-SRC/
-!Makefile*
-!*.md
-!*.c
-!*/
+vmlinux
+boot.scr
+
+# Python virtual environments
+.venv/
+venv/
+*.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Temp/editor files
+*~
+*.swp
 
 
 
+# sim generated files
+sim/**/__pycache__/
+sim/**/*.pyc
+sim/**/sim_build/
+sim/**/results.xml
+sim/**/*.log
+sim/**/*.vcd
+sim/**/*.fst
+sim/**/*.vvp
 
+# kernel/module build outputs
+sim/**/*.o
+sim/**/*.ko
+sim/**/*.mod
+sim/**/*.mod.c
+sim/**/*.mod.o
+sim/**/*.cmd
+sim/**/.*.cmd
+sim/**/.tmp_versions/
+sim/**/Module.symvers
+sim/**/modules.order
 
+# generated binaries
+sim/**/*.elf
+sim/**/*.bin
+sim/**/*.img
+sim/**/vmlinux
+sim/**/rootfs*.cpio
